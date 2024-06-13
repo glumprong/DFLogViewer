@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dwarf Fortress Log Viewer</title>
+    <style>
+        body {
+            background: rgba(0, 0, 0, 0);
+            color: rgba(255, 255, 255, 1);
+            @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap');
+            font-family: "Kanit", sans-serif;
+            overflow: hidden;
+        }
+        .kanit-regular {
+  font-family: "Kanit", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.kanit-bold {
+  font-family: "Kanit", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+        #log-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            overflow: hidden;
+            padding-bottom: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 20px;
+        }
+        {% for category in settings.categories %}
+        .{{ category }} {
+            color: {{ settings[category] }};
+            font-weight: {{ settings[category + '_bold'] }};
+            font-style: {{ settings[category + '_italic'] }};
+            text-decoration: {{ settings[category + '_underline'] }};
+        }
+        {% endfor %}
+    </style>
+</head>
+<body>
+    <div id="log-container"></div>
+    <script>
+        const logContainer = document.getElementById('log-container');
+        let evtSource = new EventSource('/stream');
+
+        const settings = {{ settings | tojson }};
+        const displayedCategories = new Set(settings.categories);
+
+        evtSource.onmessage = function(event) {
+            const [category, subcategory, text] = event.data.split('|');
+            if (!displayedCategories.has(category)) return;
+
+            const newLog = document.createElement('div');
+            newLog.textContent = text;
+            newLog.classList.add(category);
+            newLog.classList.add(subcategory);
+            logContainer.appendChild(newLog);
+            logContainer.scrollTop = logContainer.scrollHeight; // Auto-scroll to the bottom
+        };
+
+        evtSource.onerror = function() {
+            console.error('EventSource failed. Reconnecting...');
+            evtSource.close();
+            setTimeout(() => {
+                evtSource = new EventSource('/stream');
+            }, 3000);
+        };
+    </script>
+</body>
+</html>

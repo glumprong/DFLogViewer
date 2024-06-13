@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <style>
+        body {
+            @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@700&display=swap');
+            font-family: "Kanit", sans-serif;
+            font-weight: 700;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Settings</h1>
+    <form id="settings-form">
+        <table>
+            <tr>
+                <th>Category</th>
+                <th>Color</th>
+                <th>Bold</th>
+                <th>Italic</th>
+                <th>Underline</th>
+            </tr>
+            <tr>
+                <td>Battle Minor</td>
+                <td><input type="color" id="battle_minor" name="battle_minor" value="{{ settings['battle_minor'] }}"></td>
+                <td><input type="checkbox" id="battle_minor_bold" name="battle_minor_bold" {{ 'checked' if settings['battle_minor_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="battle_minor_italic" name="battle_minor_italic" {{ 'checked' if settings['battle_minor_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="battle_minor_underline" name="battle_minor_underline" {{ 'checked' if settings['battle_minor_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>Battle</td>
+                <td><input type="color" id="battle" name="battle" value="{{ settings['battle'] }}"></td>
+                <td><input type="checkbox" id="battle_bold" name="battle_bold" {{ 'checked' if settings['battle_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="battle_italic" name="battle_italic" {{ 'checked' if settings['battle_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="battle_underline" name="battle_underline" {{ 'checked' if settings['battle_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>Battle Trance</td>
+                <td><input type="color" id="battle_trance" name="battle_trance" value="{{ settings['battle_trance'] }}"></td>
+                <td><input type="checkbox" id="battle_trance_bold" name="battle_trance_bold" {{ 'checked' if settings['battle_trance_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="battle_trance_italic" name="battle_trance_italic" {{ 'checked' if settings['battle_trance_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="battle_trance_underline" name="battle_trance_underline" {{ 'checked' if settings['battle_trance_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>Job Suspension</td>
+                <td><input type="color" id="JobSuspension" name="JobSuspension" value="{{ settings['JobSuspension'] }}"></td>
+                <td><input type="checkbox" id="JobSuspension_bold" name="JobSuspension_bold" {{ 'checked' if settings['JobSuspension_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="JobSuspension_italic" name="JobSuspension_italic" {{ 'checked' if settings['JobSuspension_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="JobSuspension_underline" name="JobSuspension_underline" {{ 'checked' if settings['JobSuspension_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>Production</td>
+                <td><input type="color" id="Production" name="Production" value="{{ settings['Production'] }}"></td>
+                <td><input type="checkbox" id="Production_bold" name="Production_bold" {{ 'checked' if settings['Production_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="Production_italic" name="Production_italic" {{ 'checked' if settings['Production_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="Production_underline" name="Production_underline" {{ 'checked' if settings['Production_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>Misc</td>
+                <td><input type="color" id="misc" name="misc" value="{{ settings['misc'] }}"></td>
+                <td><input type="checkbox" id="misc_bold" name="misc_bold" {{ 'checked' if settings['misc_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="misc_italic" name="misc_italic" {{ 'checked' if settings['misc_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="misc_underline" name="misc_underline" {{ 'checked' if settings['misc_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>Masterpiece</td>
+                <td><input type="color" id="masterpiece" name="masterpiece" value="{{ settings['masterpiece'] }}"></td>
+                <td><input type="checkbox" id="masterpiece_bold" name="masterpiece_bold" {{ 'checked' if settings['masterpiece_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="masterpiece_italic" name="masterpiece_italic" {{ 'checked' if settings['masterpiece_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="masterpiece_underline" name="masterpiece_underline" {{ 'checked' if settings['masterpiece_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>Beekeeping</td>
+                <td><input type="color" id="beekeeping" name="beekeeping" value="{{ settings['beekeeping'] }}"></td>
+                <td><input type="checkbox" id="beekeeping_bold" name="beekeeping_bold" {{ 'checked' if settings['beekeeping_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="beekeeping_italic" name="beekeeping_italic" {{ 'checked' if settings['beekeeping_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="beekeeping_underline" name="beekeeping_underline" {{ 'checked' if settings['beekeeping_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>Deaths</td>
+                <td><input type="color" id="deaths" name="deaths" value="{{ settings['deaths'] }}"></td>
+                <td><input type="checkbox" id="deaths_bold" name="deaths_bold" {{ 'checked' if settings['deaths_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="deaths_italic" name="deaths_italic" {{ 'checked' if settings['deaths_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="deaths_underline" name="deaths_underline" {{ 'checked' if settings['deaths_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>DF Hack</td>
+                <td><input type="color" id="dfhack" name="dfhack" value="{{ settings['dfhack'] }}"></td>
+                <td><input type="checkbox" id="dfhack_bold" name="dfhack_bold" {{ 'checked' if settings['dfhack_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="dfhack_italic" name="dfhack_italic" {{ 'checked' if settings['dfhack_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="dfhack_underline" name="dfhack_underline" {{ 'checked' if settings['dfhack_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>Fishing</td>
+                <td><input type="color" id="fishing" name="fishing" value="{{ settings['fishing'] }}"></td>
+                <td><input type="checkbox" id="fishing_bold" name="fishing_bold" {{ 'checked' if settings['fishing_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="fishing_italic" name="fishing_italic" {{ 'checked' if settings['fishing_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="fishing_underline" name="fishing_underline" {{ 'checked' if settings['fishing_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>Interactions</td>
+                <td><input type="color" id="interactions" name="interactions" value="{{ settings['interactions'] }}"></td>
+                <td><input type="checkbox" id="interactions_bold" name="interactions_bold" {{ 'checked' if settings['interactions_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="interactions_italic" name="interactions_italic" {{ 'checked' if settings['interactions_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="interactions_underline" name="interactions_underline" {{ 'checked' if settings['interactions_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>Intruders</td>
+                <td><input type="color" id="intruders" name="intruders" value="{{ settings['intruders'] }}"></td>
+                <td><input type="checkbox" id="intruders_bold" name="intruders_bold" {{ 'checked' if settings['intruders_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="intruders_italic" name="intruders_italic" {{ 'checked' if settings['intruders_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="intruders_underline" name="intruders_underline" {{ 'checked' if settings['intruders_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>Mandates</td>
+                <td><input type="color" id="mandates" name="mandates" value="{{ settings['mandates'] }}"></td>
+                <td><input type="checkbox" id="mandates_bold" name="mandates_bold" {{ 'checked' if settings['mandates_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="mandates_italic" name="mandates_italic" {{ 'checked' if settings['mandates_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="mandates_underline" name="mandates_underline" {{ 'checked' if settings['mandates_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>Mining</td>
+                <td><input type="color" id="mining" name="mining" value="{{ settings['mining'] }}"></td>
+                <td><input type="checkbox" id="mining_bold" name="mining_bold" {{ 'checked' if settings['mining_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="mining_italic" name="mining_italic" {{ 'checked' if settings['mining_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="mining_underline" name="mining_underline" {{ 'checked' if settings['mining_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>Moods</td>
+                <td><input type="color" id="moods" name="moods" value="{{ settings['moods'] }}"></td>
+                <td><input type="checkbox" id="moods_bold" name="moods_bold" {{ 'checked' if settings['moods_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="moods_italic" name="moods_italic" {{ 'checked' if settings['moods_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="moods_underline" name="moods_underline" {{ 'checked' if settings['moods_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>Named Items</td>
+                <td><input type="color" id="named_item" name="named_item" value="{{ settings['named_item'] }}"></td>
+                <td><input type="checkbox" id="named_item_bold" name="named_item_bold" {{ 'checked' if settings['named_item_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="named_item_italic" name="named_item_italic" {{ 'checked' if settings['named_item_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="named_item_underline" name="named_item_underline" {{ 'checked' if settings['named_item_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>Animals</td>
+                <td><input type="color" id="animals" name="animals" value="{{ settings['animals'] }}"></td>
+                <td><input type="checkbox" id="animals_bold" name="animals_bold" {{ 'checked' if settings['animals_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="animals_italic" name="animals_italic" {{ 'checked' if settings['animals_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="animals_underline" name="animals_underline" {{ 'checked' if settings['animals_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>Social</td>
+                <td><input type="color" id="social" name="social" value="{{ settings['social'] }}"></td>
+                <td><input type="checkbox" id="social_bold" name="social_bold" {{ 'checked' if settings['social_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="social_italic" name="social_italic" {{ 'checked' if settings['social_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="social_underline" name="social_underline" {{ 'checked' if settings['social_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>Profession</td>
+                <td><input type="color" id="profession" name="profession" value="{{ settings['profession'] }}"></td>
+                <td><input type="checkbox" id="profession_bold" name="profession_bold" {{ 'checked' if settings['profession_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="profession_italic" name="profession_italic" {{ 'checked' if settings['profession_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="profession_underline" name="profession_underline" {{ 'checked' if settings['profession_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>Migrants</td>
+                <td><input type="color" id="migrants" name="migrants" value="{{ settings['migrants'] }}"></td>
+                <td><input type="checkbox" id="migrants_bold" name="migrants_bold" {{ 'checked' if settings['migrants_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="migrants_italic" name="migrants_italic" {{ 'checked' if settings['migrants_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="migrants_underline" name="migrants_underline" {{ 'checked' if settings['migrants_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>Seasons</td>
+                <td><input type="color" id="seasons" name="seasons" value="{{ settings['seasons'] }}"></td>
+                <td><input type="checkbox" id="seasons_bold" name="seasons_bold" {{ 'checked' if settings['seasons_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="seasons_italic" name="seasons_italic" {{ 'checked' if settings['seasons_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="seasons_underline" name="seasons_underline" {{ 'checked' if settings['seasons_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>Weather</td>
+                <td><input type="color" id="weather" name="weather" value="{{ settings['weather'] }}"></td>
+                <td><input type="checkbox" id="weather_bold" name="weather_bold" {{ 'checked' if settings['weather_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="weather_italic" name="weather_italic" {{ 'checked' if settings['weather_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="weather_underline" name="weather_underline" {{ 'checked' if settings['weather_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>Trading</td>
+                <td><input type="color" id="trading" name="trading" value="{{ settings['trading'] }}"></td>
+                <td><input type="checkbox" id="trading_bold" name="trading_bold" {{ 'checked' if settings['trading_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="trading_italic" name="trading_italic" {{ 'checked' if settings['trading_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="trading_underline" name="trading_underline" {{ 'checked' if settings['trading_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>System</td>
+                <td><input type="color" id="system" name="system" value="{{ settings['system'] }}"></td>
+                <td><input type="checkbox" id="system_bold" name="system_bold" {{ 'checked' if settings['system_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="system_italic" name="system_italic" {{ 'checked' if settings['system_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="system_underline" name="system_underline" {{ 'checked' if settings['system_underline'] == 'underline' else '' }}></td>
+            </tr>
+            <tr>
+                <td>Emotion</td>
+                <td><input type="color" id="emotion" name="emotion" value="{{ settings['emotion'] }}"></td>
+                <td><input type="checkbox" id="emotion_bold" name="emotion_bold" {{ 'checked' if settings['emotion_bold'] == 'bold' else '' }}></td>
+                <td><input type="checkbox" id="emotion_italic" name="emotion_italic" {{ 'checked' if settings['emotion_italic'] == 'italic' else '' }}></td>
+                <td><input type="checkbox" id="emotion_underline" name="emotion_underline" {{ 'checked' if settings['emotion_underline'] == 'underline' else '' }}></td>
+            </tr>
+        </table>
+        <div>
+            <label for="font_size">Font Size:</label>
+            <input type="number" id="font_size" name="font_size" value="{{ settings['font_size'] | int }}" min="10" max="30"> px
+        </div>
+        <div>
+            <label for="categories">Select Categories to Display:</label><br>
+            <input type="checkbox" id="battle_minor" name="categories" value="battle_minor" {{ 'checked' if 'battle_minor' in settings['categories'] else '' }}> Battle Minor<br>
+            <input type="checkbox" id="battle" name="categories" value="battle" {{ 'checked' if 'battle' in settings['categories'] else '' }}> Battle<br>
+            <input type="checkbox" id="battle_trance" name="categories" value="battle_trance" {{ 'checked' if 'battle_trance' in settings['categories'] else '' }}> Battle Trance<br>
+            <input type="checkbox" id="JobSuspension" name="categories" value="JobSuspension" {{ 'checked' if 'JobSuspension' in settings['categories'] else '' }}> Job Suspension<br>
+            <input type="checkbox" id="Production" name="categories" value="Production" {{ 'checked' if 'Production' in settings['categories'] else '' }}> Production<br>
+            <input type="checkbox" id="misc" name="categories" value="misc" {{ 'checked' if 'misc' in settings['categories'] else '' }}> Misc<br>
+            <input type="checkbox" id="masterpiece" name="categories" value="masterpiece" {{ 'checked' if 'masterpiece' in settings['categories'] else '' }}> Masterpiece<br>
+            <input type="checkbox" id="beekeeping" name="categories" value="beekeeping" {{ 'checked' if 'beekeeping' in settings['categories'] else '' }}> Beekeeping<br>
+            <input type="checkbox" id="deaths" name="categories" value="deaths" {{ 'checked' if 'deaths' in settings['categories'] else '' }}> Deaths<br>
+            <input type="checkbox" id="dfhack" name="categories" value="dfhack" {{ 'checked' if 'dfhack' in settings['categories'] else '' }}> DF Hack<br>
+            <input type="checkbox" id="fishing" name="categories" value="fishing" {{ 'checked' if 'fishing' in settings['categories'] else '' }}> Fishing<br>
+            <input type="checkbox" id="interactions" name="categories" value="interactions" {{ 'checked' if 'interactions' in settings['categories'] else '' }}> Interactions<br>
+            <input type="checkbox" id="intruders" name="categories" value="intruders" {{ 'checked' if 'intruders' in settings['categories'] else '' }}> Intruders<br>
+            <input type="checkbox" id="mandates" name="categories" value="mandates" {{ 'checked' if 'mandates' in settings['categories'] else '' }}> Mandates<br>
+            <input type="checkbox" id="mining" name="categories" value="mining" {{ 'checked' if 'mining' in settings['categories'] else '' }}> Mining<br>
+            <input type="checkbox" id="moods" name="categories" value="moods" {{ 'checked' if 'moods' in settings['categories'] else '' }}> Moods<br>
+            <input type="checkbox" id="named_item" name="categories" value="named_item" {{ 'checked' if 'named_item' in settings['categories'] else '' }}> Named Items<br>
+            <input type="checkbox" id="animals" name="categories" value="animals" {{ 'checked' if 'animals' in settings['categories'] else '' }}> Environmental Hazard<br>
+            <input type="checkbox" id="social" name="categories" value="social" {{ 'checked' if 'social' in settings['categories'] else '' }}> Moods<br>
+            <input type="checkbox" id="profession" name="categories" value="profession" {{ 'checked' if 'profession' in settings['categories'] else '' }}> Profession<br>
+            <input type="checkbox" id="migrants" name="categories" value="migrants" {{ 'checked' if 'migrants' in settings['categories'] else '' }}> Migrants<br>
+            <input type="checkbox" id="seasons" name="categories" value="seasons" {{ 'checked' if 'seasons' in settings['categories'] else '' }}> Seasons<br>
+            <input type="checkbox" id="weather" name="categories" value="weather" {{ 'checked' if 'weather' in settings['categories'] else '' }}> Weather<br>
+            <input type="checkbox" id="trading" name="categories" value="trading" {{ 'checked' if 'trading' in settings['categories'] else '' }}> Trading<br>
+            <input type="checkbox" id="system" name="categories" value="system" {{ 'checked' if 'system' in settings['categories'] else '' }}> System<br>
+            <input type="checkbox" id="emotion" name="categories" value="emotion" {{ 'checked' if 'emotion' in settings['categories'] else '' }}> Emotion<br>
+        </div>
+        <button type="button" onclick="saveSettings()">Save</button>
+    </form>
+
+    <script>
+function saveSettings() {
+    const settings = {
+        categories: []
+    };
+
+    document.querySelectorAll('input[name="categories"]:checked').forEach(checkbox => {
+        settings.categories.push(checkbox.value);
+    });
+
+    settings.font_size = document.getElementById('font_size').value;
+
+    settings.categories.forEach(category => {
+        settings[category] = document.getElementById(category).value;
+        settings[category + '_bold'] = document.getElementById(category + '_bold').checked ? 'bold' : 'normal';
+        settings[category + '_italic'] = document.getElementById(category + '_italic').checked ? 'italic' : 'normal';
+        settings[category + '_underline'] = document.getElementById(category + '_underline').checked ? 'underline' : 'none';
+    });
+
+    // Debug stuff to be sent
+    console.log('Settings to be sent:', settings);
+
+    fetch('/settings', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(settings),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+    </script>
+</body>
+</html>
